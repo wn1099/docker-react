@@ -1,0 +1,10 @@
+sudo: required # Travis give us sudo permission
+services:
+    - docker  #Travis need docker to run with
+
+before_install:
+    - docker build -t wnoor1099/docker-react -f Dockerfile.dev . # Build my docker file
+script:
+    - docker run -e CI=true wnoor1099/docker-react npm run test # Run this script once docker image is ready
+
+
