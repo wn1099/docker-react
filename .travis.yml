@@ -8,3 +8,16 @@ script:
     - docker run -e CI=true wnoor1099/docker-react npm run test # Run this script once docker image is ready
     #- docker run wnoor1099/docker-react npm run test -- --coverage
 
+deploy:
+    edge: true
+    provider: elasticbeanstalk # Preconfigured provider
+    region: "eu-central-1" # Which region where elasticBean created
+    app: "docker-react" # Same name given on AWS elasticBean
+    env: "Docker-env"
+    bucket_name: "elasticbeanstalk-eu-central-1-863336334596" # Travis zipped all deployment files to S3 bucket; For all EB
+    bucket_path: "docker-react" # name of app; folder created in S3 bucket
+    on:
+        branch: master # When master updated; start deploy process
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: "$AWS_SECRET_KEY"
