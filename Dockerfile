@@ -13,4 +13,6 @@ RUN npm run build
 
 
 FROM nginx
+# ElasticBean will read this config and EXPOSE port 8ß
+EXPOSE 80 
 COPY --from=builder /app/build ./usr/share/nginx/html
