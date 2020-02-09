@@ -9,8 +9,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 # Generate production arteifacts
-RUN npm run build 
-
+RUN npm run build
 
 FROM nginx
 # ElasticBean will read this config and EXPOSE port 8ß

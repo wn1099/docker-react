@@ -1,14 +1,15 @@
+# This docker-compose was attempt to build/run test container
 version: "3"
 services: 
     web:
         build: 
             context: .
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile.dev # different name; -f parameter
         ports: 
-            - "3000:3000"
+            - "3000:3000" #Port mapping
         volumes: 
-            - /app/node_modules
-            - .:/app
+            - /app/node_modules # Exlcude from override
+            - .:/app # Copy local dir to app
     tests:
         build: 
             context: .
